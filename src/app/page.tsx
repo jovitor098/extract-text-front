@@ -1,20 +1,21 @@
-'use client';
+"use client";
 
 import Form from "@/components/form";
 import getTextFromImage from "@/services/uploadImageService";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 
 export default function Home() {
-  const handlerSubmit = async (ev: FormEvent<HTMLFormElement>) => {
-      ev.preventDefault();
-      const text = await getTextFromImage(ev.currentTarget);
-      console.log(text);
-  }
+    const [text, setText] = useState("");
+    const handlerSubmit = async (ev: FormEvent<HTMLFormElement>) => {
+        ev.preventDefault();
+        const textImage = await getTextFromImage(ev.currentTarget);
+        setText(textImage);
+    };
 
-  return (
-      <>
-          <h1>Extract texts from image</h1>
-          <Form handlerSubmit={handlerSubmit} />
-      </>
-  );
+    return (
+        <>
+            <h1>Extract texts from image</h1>
+            <Form handlerSubmit={handlerSubmit} />
+        </>
+    );
 }
