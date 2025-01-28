@@ -4,6 +4,7 @@ import FormImage from "@/components/form";
 import TextResult from "@/components/textResult";
 import getTextFromImage from "@/services/uploadImageService";
 import { FormEvent, useState } from "react";
+import styles from "./page.module.scss";
 
 export default function Home() {
     const [text, setText] = useState("");
@@ -15,7 +16,7 @@ export default function Home() {
 
     return (
         <>
-            <h1>Extract texts from image</h1>
+            <h1 className={styles.title}>Extract texts from image</h1>
             <FormImage handlerSubmit={handlerSubmit} />
             {text.length > 0 ? <TextResult text={text} /> : null}
         </>
