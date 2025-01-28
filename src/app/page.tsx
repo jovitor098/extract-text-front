@@ -1,6 +1,7 @@
 "use client";
 
 import Form from "@/components/form";
+import TextResult from "@/components/textResult";
 import getTextFromImage from "@/services/uploadImageService";
 import { FormEvent, useState } from "react";
 
@@ -16,6 +17,7 @@ export default function Home() {
         <>
             <h1>Extract texts from image</h1>
             <Form handlerSubmit={handlerSubmit} />
+            {text.length > 0 ? <TextResult text={text} /> : null}
         </>
     );
 }
