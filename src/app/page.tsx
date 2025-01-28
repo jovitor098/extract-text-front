@@ -5,18 +5,41 @@ import TextResult from "@/components/textResult";
 import getTextFromImage from "@/services/uploadImageService";
 import { FormEvent, useState } from "react";
 import styles from "./page.module.scss";
-import { Container, Spinner } from "reactstrap";
+import { Container, Spinner, Toast, ToastBody } from "reactstrap";
 
 export default function Home() {
     const [text, setText] = useState("");
     const [loadingText, setLoadingText] = useState(false);
+    const [toastOpen, setToastOpen] = useState(false);
+    const [toastText, setToastText] = useState("");
+    const [toastColor, setToastColor] = useState("");
+
     const handlerSubmit = async (ev: FormEvent<HTMLFormElement>) => {
         ev.preventDefault();
         setText("");
         setLoadingText(true);
-        const textImage = await getTextFromImage(ev.currentTarget);
+        checkResponse(await getTextFromImage(ev.currentTarget));
+    };
+
+    const checkResponse = async (response: Response) => {
+        setToastOpen(true);
+        setTimeout(() => setToastOpen(false), 1000 * 4);
         setLoadingText(false);
-        setText(textImage);
+
+        if (response.status == 200) {
+            setToastText("Text extracted successfully");
+            setToastColor("bg-success");
+            
+            const textImage = await response.json();
+
+            setText(textImage.text);
+        }
+        else {
+            setToastColor("bg-danger");
+            const error = await response.json();
+            setToastText(error.error)
+        }
+
     };
 
     return (
@@ -30,6 +53,9 @@ export default function Home() {
                     <Spinner />
                 ) : null}
             </Container>
+            <Toast isOpen={toastOpen} className={`${toastColor} ${styles.toast}`} fade={true}>
+                <ToastBody className="text-white font-weight-bold">{toastText}</ToastBody>
+            </Toast>
         </>
     );
 }
