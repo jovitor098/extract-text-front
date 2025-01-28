@@ -1,0 +1,19 @@
+.form {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+
+    border-radius: 1rem;
+    padding: 2rem;
+    max-width: 40rem;
+}
+
+.label {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 2rem;
+}
