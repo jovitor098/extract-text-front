@@ -1,6 +1,4 @@
 .form {
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(5px);
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -8,10 +6,7 @@
     justify-content: space-evenly;
     text-align: center;
 
-    border-radius: 1rem;
     padding: 2rem;
-    max-width: 40rem;
-    margin: auto;
 }
 
 .label {
