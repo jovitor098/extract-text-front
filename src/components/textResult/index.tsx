@@ -5,7 +5,7 @@ interface props {
 export default function TextResult({ text }: props) {
     return (
         <>
-            <p>Your text is:</p>
+            <h3 className="mb-3">Your text is:</h3>
             <p>{text}</p>
         </>
     )
