@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.scss";
-import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export const metadata: Metadata = {
     title: "Extract text",
@@ -12,11 +12,11 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-  return (
-      <html lang="en">
-          <body>
-              <main>{children}</main>
-          </body>
-      </html>
-  );
+    return (
+        <html lang="en">
+            <body>
+                <main>{children}</main>
+            </body>
+        </html>
+    );
 }
