@@ -1,7 +1,3 @@
-interface ResponseText {
-    text: string
-}
-
 const getTextFromImage = async (form: HTMLFormElement) => {
     if (!process.env.NEXT_PUBLIC_API_URL)
         throw new Error("Url to api not set");
@@ -13,9 +9,7 @@ const getTextFromImage = async (form: HTMLFormElement) => {
         method: "post",
     });
 
-    const json: ResponseText = await response.json();
-
-    return json.text;
+    return response;
 };
 
 export default getTextFromImage;
