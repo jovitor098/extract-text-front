@@ -6,6 +6,7 @@ import getTextFromImage from "@/services/uploadImageService";
 import { FormEvent, useState } from "react";
 import styles from "./page.module.scss";
 import { Container, Spinner, Toast, ToastBody } from "reactstrap";
+import Head from "next/head";
 
 export default function Home() {
     const [text, setText] = useState("");
@@ -29,21 +30,26 @@ export default function Home() {
         if (response.status == 200) {
             setToastText("Text extracted successfully");
             setToastColor("bg-success");
-            
+
             const textImage = await response.json();
 
             setText(textImage.text);
-        }
-        else {
+        } else {
             setToastColor("bg-danger");
             const error = await response.json();
-            setToastText(error.error)
+            setToastText(error.error);
         }
-
     };
 
     return (
         <>
+            <Head>
+                <link
+                    rel="shortcut icon"
+                    href="/favicon.ico"
+                    type="image/x-icon"
+                />
+            </Head>
             <h1 className={styles.title}>Extract texts from image</h1>
             <Container className={styles.container}>
                 <FormImage handlerSubmit={handlerSubmit} />
@@ -53,8 +59,14 @@ export default function Home() {
                     <Spinner />
                 ) : null}
             </Container>
-            <Toast isOpen={toastOpen} className={`${toastColor} ${styles.toast}`} fade={true}>
-                <ToastBody className="text-white font-weight-bold">{toastText}</ToastBody>
+            <Toast
+                isOpen={toastOpen}
+                className={`${toastColor} ${styles.toast}`}
+                fade={true}
+            >
+                <ToastBody className="text-white font-weight-bold">
+                    {toastText}
+                </ToastBody>
             </Toast>
         </>
     );
