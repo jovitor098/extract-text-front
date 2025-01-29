@@ -14,3 +14,27 @@
     color: #1a1a1a;
     margin-bottom: 2rem;
 }
+
+@media(max-width: 597px){
+    .label{
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    .font{
+        padding: 1.5rem;
+    }
+}
+
+@media(max-width: 363px){
+    .label{
+        font-size: 1.1rem;
+    }
+    .form {
+        button{
+            width: 4rem;
+            height: 2rem;
+            font-size: 0.9rem;
+            padding: 0;
+        }
+    }
+}
