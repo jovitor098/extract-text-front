@@ -64,7 +64,7 @@ export default function Home() {
                 className={`${toastColor} ${styles.toast}`}
                 fade={true}
             >
-                <ToastBody className="text-white font-weight-bold">
+                <ToastBody className="text-white font-weight-bold text-center">
                     {toastText}
                 </ToastBody>
             </Toast>
