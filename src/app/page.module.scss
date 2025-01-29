@@ -2,7 +2,7 @@
     text-align: center;
     color: white;
     font-size: 4rem;
-    margin: 3rem;
+    margin: 3rem 0 0.5rem 0;
 }
 
 .container {
@@ -19,4 +19,20 @@
     position: absolute;
     right: 10;
     top: 10;
+}
+
+@media(max-width: 884px){
+    .title{
+        font-size: 3rem;
+    }
+}
+
+@media(max-width: 580px){
+    .title {
+        font-size: 2rem;
+    }
+    .toast{
+        width: 10rem;
+        top: 2;
+    }
 }
