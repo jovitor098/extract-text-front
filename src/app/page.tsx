@@ -36,8 +36,13 @@ export default function Home() {
             setText(textImage.text);
         } else {
             setToastColor("bg-danger");
-            const error = await response.json();
-            setToastText(error.error);
+            if (response){
+                const error = await response.json();
+                setToastText(error.error);
+            }
+            else {
+                setToastText("A internal server error")
+            }
         }
     };
 
